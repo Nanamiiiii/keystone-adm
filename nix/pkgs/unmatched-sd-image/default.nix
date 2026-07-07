@@ -34,6 +34,7 @@ runCommand "nixos-sd-image-${label}.img"
       --typecode=2:2E54B353-1271-4842-806F-E436D6AF6985 \
       --new=3:16384:282623 --change-name=3:NIXOS_BOOT \
       --typecode=3:EBD0A0A2-B9E5-4433-87C0-68B6B72699C7 \
+      --attributes=3:set:2 \
       --new=4:286720:0 --change-name=4:NIXOS_ROOT \
       --typecode=4:0FC63DAF-8483-4772-8E79-3D69D8477DE4 \
       "$img"
@@ -44,6 +45,7 @@ runCommand "nixos-sd-image-${label}.img"
 
     truncate -s 130M boot.img
     mkfs.vfat -F32 boot.img
+    dosfslabel boot.img NIXOS_BOOT
     mcopy -i boot.img -s files/boot/* ::/
 
     dd if=${keystonePkgs.u-boot}/u-boot-spl.bin of="$img" \

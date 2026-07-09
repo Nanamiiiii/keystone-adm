@@ -56,6 +56,8 @@
 
   boot.kernel.sysctl."kernel.perf_event_paranoid" = 0;
 
+  boot.tmp.useTmpfs = true;
+
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "yes";
   networking.firewall.allowedTCPPorts = [ 22 ];

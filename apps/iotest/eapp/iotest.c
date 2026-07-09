@@ -8,7 +8,7 @@
 
 #define FILENAME "data.tmp"
 #define BLOCK_SZ 4096
-#define BLOCK_N  1024 * 64
+#define BLOCK_N  1024
 
 int check_blk(unsigned char* buf1, unsigned char* buf2, size_t cnt) {
     for (size_t i = 0; i < cnt; i++) {
